@@ -22,12 +22,27 @@ class UrlsController < ApplicationController
   # POST /urls or /urls.json
   def create
     @url = Url.new(url_params)
+    if @url.valid?
+      random_key = SecureRandom.hex(5)
+      while Url.exists?(shortened_key: random_key)
+        random_key = SecureRandom.hex(5)
+      end
+      @url.shortened_key = random_key
+      agent = Mechanize.new
+      agent.get(@url.target_url)
+      @url.title = agent.page.title
 
-    respond_to do |format|
-      if @url.save
-        format.html { redirect_to url_url(@url), notice: "Url was successfully created." }
-        format.json { render :show, status: :created, location: @url }
-      else
+      respond_to do |format|
+        if @url.save
+          format.html { redirect_to url_url(@url), notice: "Url was successfully created." }
+          format.json { render :show, status: :created, location: @url }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @url.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @url.errors, status: :unprocessable_entity }
       end
@@ -65,6 +80,6 @@ class UrlsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def url_params
-      params.require(:url).permit(:title, :target_url, :shortened_key)
+      params.require(:url).permit(:target_url)
     end
 end

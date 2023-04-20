@@ -10,8 +10,8 @@
   </p>
 
   <p>
-    <strong>Shortened key:</strong>
-    <%= url.shortened_key %>
+    <strong>Shortened url:</strong>
+    <%= link_to "#{root_url}#{url.shortened_key}",  "#{root_url}#{url.shortened_key}" %>
   </p>
 
 </div>
