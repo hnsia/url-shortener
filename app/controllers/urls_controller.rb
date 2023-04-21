@@ -22,7 +22,7 @@ class UrlsController < ApplicationController
   # POST /urls or /urls.json
   def create
     @url = Url.new(url_params)
-    if @url.valid?
+    if valid_url? @url.target_url
       random_key = SecureRandom.hex(5)
       while Url.exists?(shortened_key: random_key)
         random_key = SecureRandom.hex(5)
@@ -43,7 +43,7 @@ class UrlsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { redirect_to new_url_path(@url), alert: "Invalid URL" }
         format.json { render json: @url.errors, status: :unprocessable_entity }
       end
     end
@@ -81,5 +81,12 @@ class UrlsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def url_params
       params.require(:url).permit(:target_url)
+    end
+
+    def valid_url?(url)
+      uri = URI.parse(url)
+      uri.is_a?(URI::HTTP) || uri.is_a?(URI::HTTPS)
+    rescue URI::InvalidURIError
+      false
     end
 end

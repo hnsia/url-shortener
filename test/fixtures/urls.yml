@@ -14,3 +14,8 @@ three:
   title: Ruby on Rails — A web-app framework that includes everything needed to create database-backed web applications according to the Model-View-Controller (MVC) pattern.
   target_url: https://rubyonrails.org/
   shortened_key: 1fdd05dfb1
+
+four:
+  title: Google
+  target_url: https://google.com/
+  shortened_key: 888d05dfb1

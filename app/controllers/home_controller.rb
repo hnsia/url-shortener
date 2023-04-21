@@ -8,7 +8,6 @@ class HomeController < ApplicationController
       @country = "home"
       @city = "bedroom"
     end
-    print 
   end
 
   # GET '/[:shortkey]', final shortened url to redirect to target path

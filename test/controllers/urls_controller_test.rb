@@ -17,10 +17,18 @@ class UrlsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create url" do
     assert_difference("Url.count") do
-      post urls_url, params: { url: { shortened_key: @url.shortened_key, target_url: @url.target_url, title: @url.title } }
+      post urls_url, params: { url: { target_url: @url.target_url } }
     end
 
     assert_redirected_to url_url(Url.last)
+  end
+
+  test "should not create url with invalid target url" do
+    assert_no_difference("Url.count") do
+      post urls_url, params: { url: { target_url: "faulty url" } }
+    end
+
+    assert_redirected_to new_url_url
   end
 
   test "should show url" do
@@ -34,7 +42,7 @@ class UrlsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update url" do
-    patch url_url(@url), params: { url: { shortened_key: @url.shortened_key, target_url: @url.target_url, title: @url.title } }
+    patch url_url(@url), params: { url: { target_url: urls(:two).target_url } }
     assert_redirected_to url_url(@url)
   end
 
