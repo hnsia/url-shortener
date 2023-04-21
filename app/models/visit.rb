@@ -1,7 +1,7 @@
 class Visit < ApplicationRecord
   belongs_to :url
 
-  def self.string_to_coords(str)
+  def self.str_to_coords(str)
     str.split(', ').map { |coord| coord.to_f }
   end
 

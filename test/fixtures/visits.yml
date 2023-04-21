@@ -2,8 +2,30 @@
 
 one:
   url: one
-  geolocation: MyString
+  geolocation: Kuala Lumpur, Malaysia
+  geocoordinates: 4.2105, 101.9758
 
 two:
+  url: one
+  geolocation: CBD, Singapore
+  geocoordinates: 1.3554, 103.8677
+
+three:
+  url: one
+  geolocation: London, UK
+  geocoordinates: 51.5072, 0.1276
+
+four:
   url: two
-  geolocation: MyString
+  geolocation: Kuala Lumpur, Malaysia
+  geocoordinates: 4.2105, 101.9758
+
+five:
+  url: two
+  geolocation: Petaling Jaya, Malaysia
+  geocoordinates: 3.1279, 101.5945
+
+six:
+  url: three
+  geolocation: CBD, Singapore
+  geocoordinates: 1.3554, 103.8677
