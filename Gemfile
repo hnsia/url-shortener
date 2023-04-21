@@ -30,6 +30,9 @@ gem "jbuilder"
 # Add website interaction
 gem 'mechanize', '~> 2.9', '>= 2.9.1'
 
+# Geolocation detector
+gem 'geocoder', '~> 1.8', '>= 1.8.1'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

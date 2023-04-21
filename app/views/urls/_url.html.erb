@@ -6,12 +6,17 @@
 
   <p>
     <strong>Target url:</strong>
-    <%= url.target_url %>
+    <%= link_to url.target_url, url.target_url %>
   </p>
 
   <p>
     <strong>Shortened url:</strong>
     <%= link_to "#{root_url}#{url.shortened_key}",  "#{root_url}#{url.shortened_key}" %>
+  </p>
+
+  <p>
+    <strong>Total visit count: </strong>
+    <%= url.visits.count %></p>
   </p>
 
 </div>

@@ -8,3 +8,14 @@
 
   <%= button_to "Destroy this url", @url, method: :delete %>
 </div>
+
+<h3>Shortlink visit history</h3>
+<div id="visits">
+  <% @url.visits.each do |visit| %>
+    <div class="visit">
+      <p>Timestamp: <%= visit.created_at %></P>
+      <p>Geolocation: <%= visit.geolocation %></P>
+      <p>Coordinates: <%= visit.geocoordinates %></P>
+    </div>
+  <% end %>
+</div>

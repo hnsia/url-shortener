@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_20_154404) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_21_080521) do
   create_table "urls", force: :cascade do |t|
     t.string "title"
     t.string "target_url"
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_20_154404) do
     t.string "geolocation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "geocoordinates"
     t.index ["url_id"], name: "index_visits_on_url_id"
   end
 
