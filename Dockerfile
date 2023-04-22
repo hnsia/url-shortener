@@ -11,11 +11,11 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-# Copy all the files in project
-COPY . .
-
 # Run migrations
 RUN rails db:migrate
+
+# Copy all the files in project
+COPY . .
 
 # Run the server
 CMD rails s -p 3000 -b '0.0.0.0'
