@@ -10,11 +10,12 @@ WORKDIR /app
 # Install dependencies
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
-RUN bundle exec rails db:migrate
-RUN bundle exec rails assets:precompile
 
 # Copy all the files in project
 COPY . .
+
+RUN bundle exec rails db:migrate
+RUN bundle exec rails assets:precompile
 
 # Run the server
 CMD rails s -p 3000 -b '0.0.0.0'
