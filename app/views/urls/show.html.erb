@@ -9,7 +9,15 @@
   <%= button_to "Destroy this url", @url, method: :delete %>
 </div>
 
-<h3>Shortlink visit history</h3>
+
+<ins><strong><h3>Report Summary</h3></strong></ins>
+<div>
+  <% @url.visits.group(:geolocation).count.each do |location, visit_count| %>
+    <p><%= "Visits from #{location}: #{visit_count}" %></P>
+  <% end %>
+</div>
+
+<ins><strong><h3>Shortlink visit history</h3></strong></ins>
 <div id="visits">
   <% @url.visits.each do |visit| %>
     <div class="visit">
