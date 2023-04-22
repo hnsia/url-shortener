@@ -14,6 +14,7 @@ RUN bundle install
 # Copy all the files in project
 COPY . .
 
+RUN bundle exec rails db:create
 RUN bundle exec rails db:migrate
 RUN bundle exec rails assets:precompile
 
