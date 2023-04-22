@@ -11,8 +11,9 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
-# Run migrations
+# Run setup
 RUN rails db:migrate
+RUN rails assets:precompile
 
 # Copy all the files in project
 COPY . .
