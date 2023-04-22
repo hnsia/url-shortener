@@ -14,5 +14,8 @@ RUN bundle install
 # Copy all the files in project
 COPY . .
 
+# Run migrations
+RUN rails db:migrate
+
 # Run the server
 CMD rails s -p 3000 -b '0.0.0.0'
