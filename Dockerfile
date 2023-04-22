@@ -2,6 +2,7 @@
 FROM ruby:3.2.2
 ARG RAILS_ENV
 ARG SECRET_KEY_BASE
+ARG DATABASE_URL
 
 # Install the needed dependencies for certain gems
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
