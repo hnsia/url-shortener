@@ -3,12 +3,16 @@
 This app allows you to shorten any url you provide it with, similar to [bit.ly](bit.ly) or [tinyurl.com](tinyurl.com)\
 It also tracks the geolocation of visitors to the shortened link.
 
-You may tryout a production deployed version of mine @ [HNS' Url Shortener](url-shortener-production-edd0.up.railway.app) \
+You may tryout a production deployed version of mine @ [HNS' Url Shortener](https://url-shortener-production-edd0.up.railway.app/) \
 **Note:** I have not used a custom domain as it is not free.
 
 ## Ruby version
 
 3.2.2
+
+## Accessible paths
+
+'/' and '/urls' are the only paths you need to use.
 
 ## System dependencies
 
